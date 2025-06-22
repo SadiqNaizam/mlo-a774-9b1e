@@ -1,14 +1,35 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React from 'react';
+import MainAppLayout from '../components/layout/MainAppLayout';
+import StatsCardGrid from '../components/Dashboard/StatsCardGrid';
+import BarChart from '../components/Dashboard/BarChart';
+import CircularProgressChart from '../components/Dashboard/CircularProgressChart';
+import AreaChart from '../components/Dashboard/AreaChart';
 
-const Index = () => {
+/**
+ * The main dashboard overview page.
+ * This page serves as the root of the user dashboard, orchestrating the layout and presentation
+ * of various data visualization components.
+ */
+const IndexPage: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <MainAppLayout>
+      <div className="flex flex-col gap-6">
+        {/* First row: Four main statistic cards */}
+        <StatsCardGrid />
+
+        {/* Second row: Bar chart and circular progress chart, laid out in a grid */}
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
+          {/* Bar chart takes up 3/4 of the width on large screens */}
+          <BarChart />
+          {/* Circular progress chart takes up 1/4 of the width on large screens */}
+          <CircularProgressChart />
+        </div>
+
+        {/* Third row: Full-width area chart for trend analysis */}
+        <AreaChart />
       </div>
-    </div>
+    </MainAppLayout>
   );
 };
 
-export default Index;
+export default IndexPage;
